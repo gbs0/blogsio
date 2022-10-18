@@ -1,10 +1,9 @@
-<div class="page-header">
-  <%= link_to posts_path, class: 'btn btn-default' do %>
-    All Posts
-  <% end %>
-  <%= link_to edit_post_path(@post), class: 'btn btn-primary' do %>
-    Edit
-  <% end %>
+<% if @post.photo.attached? %>
+  <div class="container" style="height: 20vh; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @post.photo.key, height: 300 %>')">  
+  </div>
+<% end %>
+
+<div class="page-header mt-3">
   <h1>Show post</h1>
 </div>
 
@@ -14,3 +13,18 @@
   <dt>Content:</dt>
   <dd><%= @post.content %></dd>
 </dl>
+<% if @post.photo.attached? %>
+<div class="w-100">
+  <%= cl_image_tag @post.photo.key, height: 300, width: 400, crop: :fill %>
+</div>
+<% end %>
+
+
+<div class="page-header mt-3" style="display: flex; justify-content:space-between;">
+  <%= link_to posts_path, class: 'btn btn-secondary' do %>
+    All Posts
+  <% end %>
+  <%= link_to edit_post_path(@post), class: 'btn btn-primary' do %>
+    Edit
+  <% end %>
+</div>

@@ -20,11 +20,14 @@
     <%= form.label :content, class: 'form-label' %>
       <%= form.text_area :content, class: 'form-control' %>
     </div>
+  <div class="mb-3 mt-3">
+    <%= form.file_field :photo, as: :file, style: "width: 100%" %>
+  </div>
 
   <div class="mb-3">
     <% if post.persisted? %>
       <div class="float-end">
-        <%= link_to 'Destroy', post, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Destroy', post, method: :delete, class: "text-danger", turbo: false, data: { confirm: 'Are you sure?'  } %>
       </div>
     <% end %>
 
